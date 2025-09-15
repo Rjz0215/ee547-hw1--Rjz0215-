@@ -32,9 +32,6 @@ def avg(nums):
     return (sum(nums) / len(nums)) if nums else 0.0
 
 def paragraph_count_from_html(html: str):
-    """
-    段落数：粗略以 <p> 标签计数。如果没有 <p>，回退为基于空行拆分（但 fetch 保存的原始 HTML 通常没有换行段落标记）。
-    """
     p_tags = re.findall(r'</p\s*>', html, flags=re.IGNORECASE)
     if p_tags:
         return len(p_tags)
@@ -90,7 +87,6 @@ def main():
         processed.append(out_name)
         print(f"[{utc_now()}] Processor wrote {out_name}", flush=True)
 
-    # 写完成标记
     status = {
         "timestamp": utc_now(),
         "processed_files": processed
@@ -102,3 +98,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
